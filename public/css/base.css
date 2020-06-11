@@ -273,7 +273,7 @@ main {
 .js .content__item--current {
 	height: auto;
 	opacity: 1;
-	padding: 3rem 5vw 10rem;
+	padding: 5rem 5vw 10rem;
 	pointer-events: auto;
 }
 

@@ -55,12 +55,17 @@
 	const preventDefault = (e) => {
 		e = e || window.event;
 		if (e.preventDefault)
-			e.preventDefault();
+			try {
+				e.preventDefault();
+			} catch(e) {};
 		e.returnValue = false;  
 	}
 	const preventDefaultForScrollKeys = (e) => {
 		if (keys[e.keyCode]) {
-			preventDefault(e);
+			if (e.preventDefault)
+				try {
+					e.preventDefault();
+				} catch(e) {};
 			return false;
 		}
 	}
@@ -342,7 +347,7 @@
 			// Also hide the item texts.
 			item.hideTexts();
 			// Set the item´s z-index to a high value so it overlaps any other grid item.
-			item.DOM.el.style.zIndex = 1000;
+			item.DOM.el.style.zIndex = 999;
 			// Get the "grid__item-bg" width and height and set it explicitly, 
 			// also set its top and left respective to the page.
 			const itemDim = this.getSizePosition(item.DOM.el);
